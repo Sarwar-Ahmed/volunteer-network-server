@@ -15,10 +15,11 @@ const port = 5000
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
   const volunteerCollection = client.db("volunteerNetworkDB").collection("volunteringWork");
+  const loggedInUserCollection = client.db("volunterNetworkDB").collection("userCollection");
   
-  app.post('/addEvent', (req, res) => {
+  app.post('/addUserEvent', (req, res) => {
       const events = req.body;
-      volunteerCollection.insertMany(events)
+      loggedInUserCollection.insertOne(events)
       .then(result => {
           res.send(result.insertedCount);
       })
@@ -30,6 +31,13 @@ client.connect(err => {
           res.send(documents);
       })
   })
+
+  app.get('/userEvents', (req, res) => {
+    loggedInUserCollection.find({})
+    .toArray((err, documents) =>{
+        res.send(documents);
+    })
+})
 });
 
 
