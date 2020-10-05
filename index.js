@@ -41,6 +41,15 @@ client.connect(err => {
             })
     })
 
+    app.post('/events', (req, res) => {
+        const events = req.body;
+        volunteerCollection.insertOne(events)
+        .then(result => {
+            // res.send(result.insertedCount);
+            console.log(result);
+        })
+    })
+
     app.get('/adminEvents', (req, res) => {
         loggedInUserCollection.find({})
             .toArray((err, documents) => {
