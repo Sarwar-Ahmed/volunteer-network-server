@@ -8,7 +8,7 @@
     "start:dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "sarwar",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -17,8 +17,6 @@
     "express": "^4.17.1",
     "firebase-admin": "^9.2.0",
     "mongodb": "^3.6.2"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.4"
   }
+  
 }
