@@ -45,8 +45,7 @@ client.connect(err => {
         const events = req.body;
         volunteerCollection.insertOne(events)
         .then(result => {
-            // res.send(result.insertedCount);
-            console.log(result);
+            res.send(result.insertedCount);
         })
     })
 
